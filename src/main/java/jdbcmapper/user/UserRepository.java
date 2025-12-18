@@ -16,7 +16,7 @@ public final class UserRepository {
     public static final RowMapper<USer> USER_MAPPEN = rs -> {
         long id = rs.getLong("id");
         String name = rs.getString("name");
-        String birthday = rs.getString("birthday");
+        String birthday = rs.getString("birthdate");
         LocalDate birthDate = LocalDate.parse(birthday);
 
         return new USer(id, name, birthDate);
@@ -28,7 +28,7 @@ public final class UserRepository {
 
     public void insertBatch(List<USer> users) {
         db.inTransaction(con -> {
-            String sql = "insert into users (name, birthday) values (?, ?)";
+            String sql = "insert into users (name, birthdate) values (?, ?)";
             try (var ps = con.prepareStatement(sql)) {
                 for (var u : users) {
                     ps.setString(1, u.name());

@@ -7,12 +7,13 @@ public final class UserSchema {
 
     public static void create(Db db) {
         String ddl = """
-                create table if not exists users (
-                id integer primary key autoincrement,
-                name text not null,
-                birthdate text not null,
-                )
-                """;
+    CREATE TABLE IF NOT EXISTS users (
+      id        INTEGER PRIMARY KEY AUTOINCREMENT,
+      name      TEXT NOT NULL,
+      birthdate TEXT NOT NULL
+    )
+    """;
         db.update(ddl);
+
     }
 }
