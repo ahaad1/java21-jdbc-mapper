@@ -11,9 +11,9 @@ public final class UserSeeder {
             return;
         }
 
-        repo.insertBatch(List.of(
-                new USer(0, "leonid", LocalDate.of(2004, 11, 19)),
-                new USer(0, "ahad", LocalDate.of(2005, 9, 17))
-        ));
+//        repo.insertBatch(List.of(
+//                new USer(0, "leonid", LocalDate.of(2004, 11, 19)),
+//                new USer(0, "ahad", LocalDate.of(2005, 9, 17))
+//        ));
     }
 }

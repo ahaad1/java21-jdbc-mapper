@@ -52,7 +52,7 @@ public final class Db {
         if (rows.isEmpty()) {
             throw new RuntimeException("Expected 1 row, got 0");
         }
-        return rows.get(0);
+        return rows.getFirst();
     }
 
     public void inTransaction(ThrowingConsumer<Connection> work) {
@@ -81,6 +81,11 @@ public final class Db {
     @FunctionalInterface
     public interface ThrowingConsumer<T> {
         void accept(T t) throws Exception;
+    }
+
+    @FunctionalInterface
+    public interface RowMapper<T> {
+        T map(ResultSet rs) throws SQLException;
     }
 }
 
